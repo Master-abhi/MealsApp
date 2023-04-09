@@ -1,0 +1,52 @@
+
+<html lang="eng">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Meals App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+  <div id='nav-bar'>
+    <span><a href="index.html">Meals App</a></span>
+    
+    
+    <div id="navs">
+      <ul id="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li onclick="showFavMealList()"><span> My Fav Meal</span> </li>
+        <li onclick="About()"><span> About Us</span></li>  
+      </ul>
+    </div>
+    <div id="menu">
+      <img src="Assets/bars-solid.svg" alt="..." onclick="showFavMealList()">
+    </div>
+  </div>
+
+  <div id='main-container'>
+    <h1>Search your Meal here</h1>
+    <div id="inputs">
+      <input type='text'placeholder='Search here...' id="inputhere">
+      <button id="click" onclick="showMealList()"> Search</button>
+    </div>
+    
+    <h2 id="name">Your Result will show here:</h2>
+  </div>
+  <div id="display">
+        
+
+  </div> 
+
+
+
+
+  <script src="script.js"></script>
+  
+</body>
+
+</html>
