@@ -1,6 +1,6 @@
 // it makes a favourites meal array if its not exist in local storage
-if (localStorage.getItem("favouritesList") == null) {
-    localStorage.setItem("favouritesList", JSON.stringify([]));
+if (localStorage.getItem("myFavMeals") == null) {
+    localStorage.setItem("myFavMeals", JSON.stringify([]));
   }
   showMealList();
   // it fetches meals from api and return it
@@ -9,11 +9,11 @@ if (localStorage.getItem("favouritesList") == null) {
     const meals = await response.json();
     return meals;
   }
-  
+  // it shows meal items in display area
 function showMealList() {
     let name = document.getElementById('name');
     let inputValue = document.getElementById("inputhere").value;
-    let arr = JSON.parse(localStorage.getItem("favouritesList"));
+    let arr = JSON.parse(localStorage.getItem("myFavMeals"));
     let url = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
     let html = "";
     let meals = fetchMealsFromApi(url, inputValue);
@@ -54,15 +54,11 @@ function showMealList() {
         });
       } else {
         html += `
-              <div>
-                  <div class="container">
-                      <div>
-                          <div id='not-found'>
-                                  The meal you are looking for was not found.
-                              </div>
-                          </div>
-                      </div>
-                  </div>
+
+              <div id="moreDetails">
+                <div id="about">
+                  <h3>The meal you are looking for was not found.</h3>
+                </div>
               </div>
               `;
       }
@@ -79,7 +75,7 @@ function changeIcon(){
         image.src='Assets/heart-regular.svg';
       }
 }
-
+// it will show meals more details in display area
 async function showMealDetails(id) {
     let name = document.getElementById('name');
     let url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=";
@@ -109,6 +105,8 @@ async function showMealDetails(id) {
     });
     document.getElementById("display").innerHTML = html;
   }
+
+  // this is for about us section
   async function About(){
     let html = "";
     let name = document.getElementById('name');
@@ -126,23 +124,18 @@ async function showMealDetails(id) {
   
   
   
-  // it shows all favourites meals in favourites body
+  // it shows all favourites meals in display area
   async function showFavMealList() {
-    let arr = JSON.parse(localStorage.getItem("favouritesList"));
+    let arr = JSON.parse(localStorage.getItem("myFavMeals"));
     let url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=";
     let html = "";
     let name = document.getElementById('name');
     name.innerHTML = 'Your Favourite Meals will show here:'
     if (arr.length == 0) {
       html += `
-                  <div>
-                  <div class="container">
-                      <div>
-                          <div id='not-found'>
-                                  The meal you are looking for was not found.
-                              </div>
-                          </div>
-                      </div>
+              <div id="moreDetails">
+                  <div id="about">
+                    <h3>Not added any Favourite meal.</h3>
                   </div>
               </div>
               `;
@@ -171,8 +164,8 @@ async function showMealDetails(id) {
   
   
   //it adds and remove meals to favourites list
-  function addRemoveToFavList(id) {
-    let arr = JSON.parse(localStorage.getItem("favouritesList"));
+  async function addRemoveToFavList(id) {
+    let arr = JSON.parse(localStorage.getItem("myFavMeals"));
     let contain = false;
     for (let index = 0; index < arr.length; index++) {
       if (id == arr[index]) {
@@ -183,16 +176,17 @@ async function showMealDetails(id) {
     if (contain) {
       let number = arr.indexOf(id);
       arr.splice(number, 1);
-      // showFavMealList();
       alert("your meal removed from your favourites list");
-      
+
     } else {
       arr.push(id);
       alert("your meal add your favourites list");
-    }
-    localStorage.setItem("favouritesList", JSON.stringify(arr));
+
     
+    }
+    localStorage.setItem("myFavMeals", JSON.stringify(arr));
     showMealList();
     showFavMealList();
+    
   }
   
