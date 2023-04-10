@@ -39,13 +39,20 @@ html {
     font-weight: bolder;
     position: fixed;
   }
+  #nav-bar span{
+    cursor: pointer;
+  }
   a{
     color: var(--dark);
     text-decoration: none;
   }
   #menu{
-    height: 20px;
+    display: flex;
     margin-right: 10px;
+  }
+
+  #menu img{
+    height: 20px;
     display: none;
   }
   #navs{
@@ -75,8 +82,7 @@ html {
     color: var(--dark);
   }
   li{
-    margin: 10px;
-    padding: 20px;
+    margin: 20px;
     cursor: pointer;
   }
   li a:hover{
@@ -92,7 +98,12 @@ html {
     #navs{
       display: none;
     }
-    #menu{
+    #menu-items{
+      display:flex;
+      margin-right: 10px;
+      width: 40px;
+    }
+    #menu img{
       display:flex;
       margin-left: 50%;
     }
@@ -299,4 +310,5 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 80%;
 }
