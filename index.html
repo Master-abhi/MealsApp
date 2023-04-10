@@ -19,12 +19,18 @@
     <div id="navs">
       <ul id="nav-list">
         <li onclick="showMealList()"><span> Home</span> </li>
-        <li onclick="showFavMealList()"><span> My Fav Meal</span> </li>
+        <li onclick="showFavMealList()"><span> Fav Meals</span> </li>
         <li onclick="About()"><span> About Us</span></li>  
       </ul>
     </div>
     <div id="menu">
-      <img src="Assets/bars-solid.svg" alt="..." onclick="showFavMealList()">
+      <div id="menu-items">
+        <img src="Assets/like.png" alt="..." onclick="showFavMealList()">
+      </div>
+      <div id="menu-items">
+        <img src="Assets/info-button.png" alt="..." onclick="About()">
+      </div>
+      
     </div>
   </div>
 
